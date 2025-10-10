@@ -1,0 +1,35 @@
+# dependencies
+/node_modules
+
+# production
+/.next
+/out
+
+# local env files
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# test coverage
+coverage/
+
+# OS
+Thumbs.db
+
+# lock files (ixtiyoriy, lekin istasang bir xil muhit uchun saqlab qol)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
