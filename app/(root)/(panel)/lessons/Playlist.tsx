@@ -21,7 +21,9 @@ export default function Playlists() {
       if (playlists) {
         return;
       }
-      const res: any = await playlistService.getAll();
+      const res: any = await playlistService.getAll()
+      console.log(res);
+      
       const res_playlists: Playlist[] = res;
       dispatch(updateplaylists(res_playlists));
     } catch (error: any) {
@@ -43,6 +45,7 @@ export default function Playlists() {
 
   return (
     <div>
+      <img src="https://boburov-pr.s3.amazonaws.com/thumbnails/17e84a4e-8f88-4368-bdb3-0f649f2c5124-720px-photo_2025-10-13_18-12-29.jpg" alt="" />
       {is_loading ? (
         <div className="w-full py-10 flex justify-center items-center">
           <Loader />

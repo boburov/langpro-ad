@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { LessonContext } from "../layout";
+import { LessonContext } from "../LessonProvider";
 import vocService from "@/app/api/services/vocService";
 import { Lesson, Vocs } from "@/app/types/User";
 

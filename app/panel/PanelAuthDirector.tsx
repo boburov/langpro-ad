@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HashLoader } from "react-spinners";
 import authService from "../api/services/verificationService";
-import { updateUser } from "../store/slices/adminSlice";
+import { updateUser } from "../store/slices/userSlice";
 
 export default function PanelAuthDirector() {
   const [loading, setloading] = useState(true);
@@ -20,7 +20,8 @@ export default function PanelAuthDirector() {
       if (!user.currentUser) {
         async function DispatchUser() {
           try {
-            const user_profile = await authService.getProfile();
+            const response = await authService.getProfile();
+            const user_profile = response.data;
             dispatch(updateUser(user_profile));
           } catch (error) {
             try {
@@ -31,11 +32,11 @@ export default function PanelAuthDirector() {
               const access_token: any = await authService.resetToken(
                 reset_token
               );
-              if (!access_token) {
-                return router.push("/signup");
-              }
+              if (!access_token) return router.push("/signup");
               localStorage.setItem("access_token", access_token);
-              const user_profile = await authService.getProfile();
+
+              const response = await authService.getProfile();
+              const user_profile = response.data; // <-- shu yerda ham .data ishlating
               dispatch(updateUser(user_profile));
             } catch (error) {
               router.push("/signup");

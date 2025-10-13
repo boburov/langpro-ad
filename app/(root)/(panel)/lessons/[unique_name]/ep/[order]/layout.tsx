@@ -1,15 +1,13 @@
 "use client";
 import { Roboto } from "next/font/google";
 import "@/app/globals.css";
-import { useContext, useState } from "react";
-import { Lesson } from "@/app/types/User";
-import { createContext } from "react";
-import { GlobalContext } from "../../layout";
-import { useParams } from "next/navigation";
 import Heading from "@/app/(global_components)/Heading";
 import Link from "next/link";
-import PageMessage from "@/app/(global_components)/PageMessage";
 import { Edit, Trash2 } from "lucide-react";
+import LessonProvider, { LessonContext } from "./LessonProvider";
+import { useContext } from "react";
+import PageMessage from "@/app/(global_components)/PageMessage";
+import { useParams } from "next/navigation";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -17,20 +15,9 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export const LessonContext = createContext<any>(null);
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const { order } = useParams();
-  const { playlist } = useContext(GlobalContext);
-  const lessons: Lesson[] = playlist.lessons;
-
-  const [lesson, setLesson] = useState<Lesson | undefined>(
-    lessons.find((le) => le.order === Number(order))
-  );
+function LessonLayout({ children }: { children: React.ReactNode }) {
+  const { order, unique_name } = useParams();
+  const { lesson } = useContext(LessonContext);
 
   if (!lesson) {
     return (
@@ -43,7 +30,7 @@ export default function RootLayout({
     );
   }
 
-  const current_link = `/lessons/${playlist.unique_name}/ep/${lesson?.order}`;
+  const current_link = `/lessons/${unique_name}/ep/${order}`;
 
   return (
     <div className={`${roboto.className} antialiased w-full space-y-5`}>
@@ -61,10 +48,20 @@ export default function RootLayout({
         </div>
       </div>
       <div className="w-full">
-        <LessonContext.Provider value={{ lesson, setLesson, current_link }}>
-          {children}
-        </LessonContext.Provider>
+        {children}
       </div>
     </div>
+  );
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <LessonProvider>
+      <LessonLayout>{children}</LessonLayout>
+    </LessonProvider>
   );
 }

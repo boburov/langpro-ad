@@ -4,7 +4,7 @@ import playlistService from "@/app/api/services/playlistsService";
 import { Courses, Playlist, User } from "@/app/types/User";
 import { Plus } from "lucide-react";
 import { useContext, useState } from "react";
-import { UserContext } from "../page";
+import { UserContext } from "../UserProvider";
 
 export default function PlaylistCards({
   playlist,

@@ -10,8 +10,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Edulingo | Admin panel",
-  description: "Only for staff of Edulingo",
+  title: "LangPro | Admin panel",
+  description: "Only for staff of LangPro",
   icons: {
     icon: "/icons/icon.svg",
   },

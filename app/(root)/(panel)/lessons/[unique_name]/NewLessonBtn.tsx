@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useContext } from "react";
-import { GlobalContext } from "./layout";
+import { GlobalContext } from "./GlobalProvider";
 import { BadgePlus } from "lucide-react";
 
 export default function CreateLessonButton() {

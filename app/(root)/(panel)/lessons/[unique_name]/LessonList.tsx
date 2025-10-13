@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "./layout";
+import { GlobalContext } from "./GlobalProvider";
 import { Lesson } from "@/app/types/User";
 import PageMessage from "@/app/(global_components)/PageMessage";
 import LessonCard from "./LessonCard";

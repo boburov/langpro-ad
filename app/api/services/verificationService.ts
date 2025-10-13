@@ -19,9 +19,20 @@ const validationService = {
     }
   },
 
+  resetToken: async (reset_token: string) => {
+    return api.post(`/reset-token`, { reset_token });
+  },
   getStats: async () => {
     try {
       return await api.get(apiEndpoints.getStats);
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getProfile: async () => {
+    try {
+      return await api.get(apiEndpoints.getProfile);
     } catch (error) {
       throw error;
     }

@@ -1,7 +1,7 @@
 "use client";
 import Heading from "@/app/(global_components)/Heading";
 import { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "../layout";
+import { GlobalContext } from "../GlobalProvider";
 import playlistService from "@/app/api/services/playlistsService";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";

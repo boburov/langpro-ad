@@ -2,7 +2,7 @@
 import { Lesson, Vocs } from "@/app/types/User";
 import { Trash2 } from "lucide-react";
 import { useContext, useState } from "react";
-import { LessonContext } from "../layout";
+import { LessonContext } from "../LessonProvider";
 import { useRouter } from "next/navigation";
 import Loader from "@/app/(global_components)/Loader";
 import vocService from "@/app/api/services/vocService";
